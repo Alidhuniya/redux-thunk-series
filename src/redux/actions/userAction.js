@@ -41,8 +41,8 @@ export const fetchUsers = () => {
         dispatch(fetchUsersRequest())
        const data = await fetch("https://jsonplaceholder.typicode.com/users")
         const res2 = await data.json()
-            const users = res2
-            dispatch(fetchUsersSuccess(users))
+            const result = res2
+            dispatch(fetchUsersSuccess(result))
         .catch(error => {
           dispatch(fetchUsersFailure(error.message))
         })
