@@ -5,7 +5,7 @@ import { fetchUsers } from './../redux/actions/userAction';
  class UserContainer extends Component {
   componentDidMount() {
     this.props.fetchUsers();
-    console.log(this.props.fetchUsers())
+    
   }
     render() {
         // const {x, increment, decrement, reset} = this.props;

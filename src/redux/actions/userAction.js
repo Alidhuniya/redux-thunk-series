@@ -1,21 +1,37 @@
-import axios from "axios";
+// import axios from "axios";
 import { actionTypes } from './actionTypes';
 
-export const fetchUsers = () => {
-    return (dispatch) => {
-      dispatch(fetchUsersRequest())
-      axios
-        .get('https://jsonplaceholder.typicode.com/users')
-        .then(response => {
-          // response.data is the users
-          const users = response.data
-          dispatch(fetchUsersSuccess(users))
-        })
-        .catch(error => {
-          // error.message is the error message
-          dispatch(fetchUsersFailure(error.message))
-        })
-    }
+// export const fetchUsers = () => {
+//     return (dispatch) => {
+//       dispatch(fetchUsersRequest())
+//       axios
+//         .get('https://jsonplaceholder.typicode.com/users')
+//         .then(response => {
+//           // response.data is the users
+//           const users = response.data
+//           dispatch(fetchUsersSuccess(users))
+//         })
+//         .catch(error => {
+//           // error.message is the error message
+//           dispatch(fetchUsersFailure(error.message))
+//         })
+//     }
+//   }
+
+//regular fetch
+  export const fetchUsers = () => {
+      return (dispatch) => {
+          dispatch(fetchUsersRequest())
+          fetch("https://jsonplaceholder.typicode.com/users")
+          .then(res => res.json())
+          .then(res2 => {
+              const users = res2
+              dispatch(fetchUsersSuccess(users))
+          })
+          .catch(error => {
+            dispatch(fetchUsersFailure(error.message))
+          })
+      }
   }
   
   export const fetchUsersRequest = () => {
