@@ -1,26 +1,26 @@
-import axios from "axios";
+// import axios from "axios";
 import { actionTypes } from './actionTypes';
 import { Client } from './../../Client';
 
-export const fetchUsers = () => {
-    return (dispatch) => {
-      dispatch(fetchUsersRequest())
-      axios
-      Client.getEntries({
-                    'content_type': 'offertshirt',
-                    'limit': 3,
-                  })
-        .then(response => {
-          // response.data is the users
-          const users = response.items
-          dispatch(fetchUsersSuccess(users))
-        })
-        .catch(error => {
-          // error.message is the error message
-          dispatch(fetchUsersFailure(error.message))
-        })
-    }
-  }
+// export const fetchUsers = () => {
+//     return (dispatch) => {
+//       dispatch(fetchUsersRequest())
+//       axios
+//       Client.getEntries({
+//                     'content_type': 'offertshirt',
+//                     'limit': 3,
+//                   })
+//         .then(response => {
+//           // response.data is the users
+//           const users = response.items
+//           dispatch(fetchUsersSuccess(users))
+//         })
+//         .catch(error => {
+//           // error.message is the error message
+//           dispatch(fetchUsersFailure(error.message))
+//         })
+//     }
+//   }
 
 // regular fetch
 //   export const fetchUsers = () => {
@@ -43,18 +43,21 @@ export const fetchUsers = () => {
 
 // regular async await
 
-// export const fetchUsers = () => {
-//     return async (dispatch) => {
-//         dispatch(fetchUsersRequest())
-//        const data = await fetch("https://jsonplaceholder.typicode.com/users")
-//         const res2 = await data.json()
-//             const result = res2
-//             dispatch(fetchUsersSuccess(result))
-//         .catch(error => {
-//           dispatch(fetchUsersFailure(error.message))
-//         })
-//     }
-// }
+export const fetchUsers = () => {
+    return async (dispatch) => {
+        dispatch(fetchUsersRequest())
+       const data = await  Client.getEntries({
+                    'content_type': 'offertshirt',
+                    'limit': 3,
+                  })
+        const res2 = await data.items
+            const result = res2
+            dispatch(fetchUsersSuccess(result))
+        .catch(error => {
+          dispatch(fetchUsersFailure(error.message))
+        })
+    }
+}
   
   export const fetchUsersRequest = () => {
     return {
