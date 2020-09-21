@@ -31,7 +31,7 @@ import { fetchUsers } from './../redux/actions/userAction';
 
 const mapStateToProps = state => {
   return {
-    userData: state.user
+    userData: state.userList
   }
 }
 
