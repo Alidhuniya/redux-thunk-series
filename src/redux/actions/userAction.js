@@ -19,20 +19,35 @@ import { actionTypes } from './actionTypes';
 //   }
 
 //regular fetch
-  export const fetchUsers = () => {
-      return (dispatch) => {
-          dispatch(fetchUsersRequest())
-          fetch("https://jsonplaceholder.typicode.com/users")
-          .then(res => res.json())
-          .then(res2 => {
-              const users = res2
-              dispatch(fetchUsersSuccess(users))
-          })
-          .catch(error => {
-            dispatch(fetchUsersFailure(error.message))
-          })
-      }
-  }
+//   export const fetchUsers = () => {
+//       return (dispatch) => {
+//           dispatch(fetchUsersRequest())
+//           fetch("https://jsonplaceholder.typicode.com/users")
+//           .then(res => res.json())
+//           .then(res2 => {
+//               const users = res2
+//               dispatch(fetchUsersSuccess(users))
+//           })
+//           .catch(error => {
+//             dispatch(fetchUsersFailure(error.message))
+//           })
+//       }
+//   }
+
+// regular async await
+
+export const fetchUsers = () => {
+    return async (dispatch) => {
+        dispatch(fetchUsersRequest())
+       const data = await fetch("https://jsonplaceholder.typicode.com/users")
+        const res2 = await data.json()
+            const users = res2
+            dispatch(fetchUsersSuccess(users))
+        .catch(error => {
+          dispatch(fetchUsersFailure(error.message))
+        })
+    }
+}
   
   export const fetchUsersRequest = () => {
     return {
