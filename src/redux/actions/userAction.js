@@ -1,5 +1,6 @@
 // import axios from "axios";
 import { actionTypes } from './actionTypes';
+import { Client } from './../../Client';
 
 // export const fetchUsers = () => {
 //     return (dispatch) => {
@@ -18,36 +19,39 @@ import { actionTypes } from './actionTypes';
 //     }
 //   }
 
-//regular fetch
-//   export const fetchUsers = () => {
-//       return (dispatch) => {
-//           dispatch(fetchUsersRequest())
-//           fetch("https://jsonplaceholder.typicode.com/users")
-//           .then(res => res.json())
-//           .then(res2 => {
-//               const users = res2
-//               dispatch(fetchUsersSuccess(users))
-//           })
-//           .catch(error => {
-//             dispatch(fetchUsersFailure(error.message))
-//           })
-//       }
-//   }
+// regular fetch
+  export const fetchUsers = () => {
+      return (dispatch) => {
+          dispatch(fetchUsersRequest())
+          Client.getEntries({
+            'content_type': 'offertshirt',
+            'limit': 3,
+          })
+        //   .then(res => res.json())
+          .then(res2 => {
+              const users = res2.items
+              dispatch(fetchUsersSuccess(users))
+          })
+          .catch(error => {
+            dispatch(fetchUsersFailure(error.message))
+          })
+      }
+  }
 
 // regular async await
 
-export const fetchUsers = () => {
-    return async (dispatch) => {
-        dispatch(fetchUsersRequest())
-       const data = await fetch("https://jsonplaceholder.typicode.com/users")
-        const res2 = await data.json()
-            const result = res2
-            dispatch(fetchUsersSuccess(result))
-        .catch(error => {
-          dispatch(fetchUsersFailure(error.message))
-        })
-    }
-}
+// export const fetchUsers = () => {
+//     return async (dispatch) => {
+//         dispatch(fetchUsersRequest())
+//        const data = await fetch("https://jsonplaceholder.typicode.com/users")
+//         const res2 = await data.json()
+//             const result = res2
+//             dispatch(fetchUsersSuccess(result))
+//         .catch(error => {
+//           dispatch(fetchUsersFailure(error.message))
+//         })
+//     }
+// }
   
   export const fetchUsersRequest = () => {
     return {
