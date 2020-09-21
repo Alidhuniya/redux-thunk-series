@@ -21,7 +21,15 @@ import { fetchUsers } from './../redux/actions/userAction';
               <div>
                 {this.props.userData &&
                   this.props.userData.users &&
-                  this.props.userData.users.map(user => <p>{user.fields.offertitle}</p>)}
+                  this.props.userData.users.map(user => 
+                  
+                    <div>
+                  <p>{user.fields.offertitle}</p>
+                  <p>{user.fields.offerdec}</p>
+                  <p>{user.fields.offerprice}</p>
+                  </div>
+                
+                  )}
               </div>
             </div>
           )
