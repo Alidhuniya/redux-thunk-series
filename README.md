@@ -1,3 +1,3 @@
 
-part-1
-source: https://steffy.hashnode.dev/using-react-with-redux-redux-thunk-cke21hall003labs10bc0buuh
+source: https://www.youtube.com/watch?v=tcCS4mGAq7Q&ab_channel=Codevolution
+code: https://github.com/gopinav/React-Redux-Tutorials/tree/master/react-redux-demo/src/redux/user

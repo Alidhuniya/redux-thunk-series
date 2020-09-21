@@ -1,10 +1,10 @@
   
 import { combineReducers } from 'redux';
-import fetchCatReducer from './fetchCatReducer';
+import userReducer from './userReducer';
 
 const allReducers =  combineReducers(
     {
-    catsfav: fetchCatReducer
+    user: userReducer
     }
 );
 
