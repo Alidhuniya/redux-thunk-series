@@ -1,10 +1,10 @@
   
 import { combineReducers } from 'redux';
-import counterReducer from './counterReducer';
+import fetchCatReducer from './fetchCatReducer';
 
 const allReducers =  combineReducers(
     {
-      counterReducer
+    catsfav: fetchCatReducer
     }
 );
 
