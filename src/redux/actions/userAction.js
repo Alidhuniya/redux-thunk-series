@@ -1,42 +1,45 @@
-// import axios from "axios";
+import axios from "axios";
 import { actionTypes } from './actionTypes';
 import { Client } from './../../Client';
 
-// export const fetchUsers = () => {
-//     return (dispatch) => {
-//       dispatch(fetchUsersRequest())
-//       axios
-//         .get('https://jsonplaceholder.typicode.com/users')
-//         .then(response => {
-//           // response.data is the users
-//           const users = response.data
-//           dispatch(fetchUsersSuccess(users))
-//         })
-//         .catch(error => {
-//           // error.message is the error message
-//           dispatch(fetchUsersFailure(error.message))
-//         })
-//     }
-//   }
+export const fetchUsers = () => {
+    return (dispatch) => {
+      dispatch(fetchUsersRequest())
+      axios
+      Client.getEntries({
+                    'content_type': 'offertshirt',
+                    'limit': 3,
+                  })
+        .then(response => {
+          // response.data is the users
+          const users = response.items
+          dispatch(fetchUsersSuccess(users))
+        })
+        .catch(error => {
+          // error.message is the error message
+          dispatch(fetchUsersFailure(error.message))
+        })
+    }
+  }
 
 // regular fetch
-  export const fetchUsers = () => {
-      return (dispatch) => {
-          dispatch(fetchUsersRequest())
-          Client.getEntries({
-            'content_type': 'offertshirt',
-            'limit': 3,
-          })
-        //   .then(res => res.json())
-          .then(res2 => {
-              const users = res2.items
-              dispatch(fetchUsersSuccess(users))
-          })
-          .catch(error => {
-            dispatch(fetchUsersFailure(error.message))
-          })
-      }
-  }
+//   export const fetchUsers = () => {
+//       return (dispatch) => {
+//           dispatch(fetchUsersRequest())
+//           Client.getEntries({
+//             'content_type': 'offertshirt',
+//             'limit': 3,
+//           })
+//         //   .then(res => res.json())
+//           .then(res2 => {
+//               const users = res2.items
+//               dispatch(fetchUsersSuccess(users))
+//           })
+//           .catch(error => {
+//             dispatch(fetchUsersFailure(error.message))
+//           })
+//       }
+//   }
 
 // regular async await
 
